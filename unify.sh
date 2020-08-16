@@ -1,5 +1,5 @@
 USAGE="
-  $SCRIPT_NAME <command>
+  $SCRIPT_NAME <command> <directory>
 
   Commands:
   * setup_fs:
@@ -10,8 +10,8 @@ USAGE="
   * set_write <INDEX>:
   * raid <COMMAND> [OPTIONS]:
 "
-
-BASE_DIR="$PWD/data"
+COMMAND="$1"; shift
+BASE_DIR="$1"; shift
 UNION_DIR="$BASE_DIR/unify"
 TARGET_DIR="$BASE_DIR/joined"
 PARITY_DIR="$BASE_DIR/parity"
@@ -20,7 +20,6 @@ CACHE_DIR="$BASE_DIR/cache"
 CACHE_WRITE_TARGET="$BASE_DIR/cache-write"
 WRITE_TARGET="$BASE_DIR/write"
 
-COMMAND="$1"; shift
 UNION_DIRS=("$UNION_DIR"/*/)
 
 function join_by {
